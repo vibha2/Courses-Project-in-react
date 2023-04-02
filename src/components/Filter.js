@@ -2,6 +2,13 @@ import React from 'react';
 
 const Filter = (props) => {
     let filterData = props.filterData;
+    let category = props.category;
+    let setCategory = props.setCategory;
+
+    function filterHandler(title){
+        setCategory(title);
+    }
+
     console.log("filterdata: ",filterData);
     return (
         <div className='w-11/12 flex flex-wrap max-w-max space-x-4 gap-y-4 mx-auto py-4 justify-center '>
@@ -14,6 +21,7 @@ const Filter = (props) => {
                     
                      transition-all duration-300`}
                      key={data.id}
+                     onClick={() => filterHandler(data.title)}
                      >{data.title}</button>
                    
                 )

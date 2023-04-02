@@ -3,17 +3,27 @@ import Card from './Card';
 
 const Cards = (props) => {
     let courses = props.courses;
+    let category = props.category;
     console.log("printing data: ", courses.data);
     const [likedCourses, setLikedCourses] = useState([]);
 
     function getCourses() {
-        let allCourse = [];
-        Object.values(courses).forEach( array => {
-            array.forEach( courseData => {
+        if( category === "All")
+        {
+            let allCourse = [];
+             Object.values(courses).forEach( array => {
+                array.forEach( courseData => {
                 allCourse.push(courseData);
             })
         })
         return allCourse;
+        }
+        else
+        {
+            //main sirf specifi category ka data array show krunga
+            return courses[category];
+        }
+        
     }
 
     return (
